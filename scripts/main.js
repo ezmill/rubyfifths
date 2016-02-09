@@ -44,12 +44,13 @@ function init() {
     container.appendChild(renderer.domElement);
 
     animate();
+
 }
 
 function createWarpedVideo(){
     // texture = THREE.ImageUtils.loadTexture(PATH + "textures/leger.jpg");
     video = document.createElement("video");
-    video.src = PATH + "textures/rubyfifths.mp4";
+    video.src = PATH + "textures/newruby2.mp4";
     video.load();
     video.addEventListener("canplaythrough", function(){
         video.play();
@@ -83,6 +84,7 @@ function createWarpedVideo(){
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(0, 0, 0);
     scene.add(this.mesh);
+
 
 }
 
