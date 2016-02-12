@@ -10,7 +10,7 @@ var id;
 var scene, camera, renderer, texture, fbMaterial, mask;
 var debounceResize;
 var loader = new THREE.TextureLoader();
-
+var counter = 0;
 // var capturer = new CCapture( { framerate: 60, format: 'webm', workersPath: 'js/' } );
 
 init();
@@ -103,9 +103,8 @@ function draw() {
     
     setUniforms(uniforms);
 
-    if((ffplayer.song.getCurrentPosition()/100000)>0.48){
-        uniforms["warpVal"] = 1.0;
-    }
+    // if((ffplayer.song.getCurrentPosition()/100000)>0.48){
+    // }
     renderer.render(scene, camera);
 }
 
@@ -125,7 +124,12 @@ function onMouseMove(event) {
 }
 
 function onMouseDown() {
-
+    if(counter%2==0){
+        uniforms["warpVal"] = 1.0;        
+    } else {
+        uniforms["warpVal"] = 0.0;
+    }
+    counter++;
 }
 
 function onDocumentTouchStart(event) {
