@@ -516,7 +516,7 @@ function FFPlayer(OPTIONS){
 
 	}
 	function skip(e){
-		if(Detector.webgl){
+		/*if(Detector.webgl){
 			if(videoCounter%2==1){
 				currentTexture = texture;
 				video2.pause();
@@ -529,7 +529,7 @@ function FFPlayer(OPTIONS){
 			    material.uniforms.texture.value = currentTexture;
 			}
 			videoCounter++;			
-		}
+		}*/
 		// that.song.pause();
 		if(that.mode == "sc playlist"){
 			currentPlaylistIndex++;

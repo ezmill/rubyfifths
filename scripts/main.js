@@ -21,11 +21,11 @@ if(isSafari){
 
 }
 // var capturer = new CCapture( { framerate: 60, format: 'webm', workersPath: 'js/' } );
-if ( ! Detector.webgl ){
+// if ( ! Detector.webgl ){
     Detector.addGetWebGLMessage();
-} else {
-    init();    
-}
+// } else {
+    // init();    
+// }
 
 function init() {
     scene = new THREE.Scene();
