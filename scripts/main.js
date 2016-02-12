@@ -15,17 +15,19 @@ var videoCounter = 0;
 var currentTexture;
 var FORMAT = ".webm";
 var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+var CREATEDWEBGL = false;
 
 if(isSafari){
     FORMAT = ".mp4";
 
 }
 // var capturer = new CCapture( { framerate: 60, format: 'webm', workersPath: 'js/' } );
-// if ( ! Detector.webgl ){
+if ( ! Detector.webgl || isMobile){
     Detector.addGetWebGLMessage();
-// } else {
-    // init();    
-// }
+} else {
+    CREATEDWEBGL = true;
+    init();    
+}
 
 function init() {
     scene = new THREE.Scene();
