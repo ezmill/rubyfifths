@@ -517,6 +517,18 @@ function FFPlayer(OPTIONS){
 	}
 	function skip(e){
 		console.log(that.song);
+		if(videoCounter%2==1){
+			currentTexture = texture;
+			video2.pause();
+			video.play();
+		    material.uniforms.texture.value = currentTexture;
+		} else {
+			currentTexture = texture2;		
+			video.pause();
+			video2.play();	
+		    material.uniforms.texture.value = currentTexture;
+		}
+		videoCounter++;
 		// that.song.pause();
 		if(that.mode == "sc playlist"){
 			currentPlaylistIndex++;

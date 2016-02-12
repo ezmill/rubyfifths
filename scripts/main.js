@@ -7,10 +7,12 @@ var PATH = './assets/';
 var mouse = new THREE.Vector2(0.0, 0.0);
 var time = 0.0;
 var id;
-var scene, camera, renderer, texture, fbMaterial, mask;
+var scene, camera, renderer, texture, texture2, fbMaterial, mask;
 var debounceResize;
 var loader = new THREE.TextureLoader();
 var mouseDown = false;
+var videoCounter = 0;
+var currentTexture;
 // var capturer = new CCapture( { framerate: 60, format: 'webm', workersPath: 'js/' } );
 if ( ! Detector.webgl ){
     Detector.addGetWebGLMessage();
@@ -62,8 +64,19 @@ function createWarpedVideo(){
     // video.play();
     video.loop = true;
 
+    video2 = document.createElement("video");
+    video2.src = PATH + "textures/newruby.mp4";
+    video2.load();
+    // video.play();
+    video.loop = true;
+
     texture = new THREE.Texture(video);
     texture.minFilter = texture.magFilter = THREE.LinearFilter;
+
+    texture2 = new THREE.Texture(video2);
+    texture2.minFilter = texture2.magFilter = THREE.LinearFilter;
+
+    currentTexture = texture;
 
     shader = new WarpShader()
     uniforms = {
@@ -79,7 +92,7 @@ function createWarpedVideo(){
         transparent: true,
         side: 2
     });
-    material.uniforms.texture.value = texture;
+    material.uniforms.texture.value = currentTexture;
     material.uniforms.resolution.value = new THREE.Vector2(renderSize.x, renderSize.y);
     material.uniforms.mouse.value = new THREE.Vector2(renderSize.x, 0);
 
@@ -103,7 +116,7 @@ function draw() {
 
     uniforms["time"] += 0.01;
     
-    texture.needsUpdate = true;
+    currentTexture.needsUpdate = true;
     
     setUniforms(uniforms);
 
@@ -112,7 +125,6 @@ function draw() {
     } else {
         uniforms["warpVal"] += (0.0 - uniforms["warpVal"])*0.1;
     }
-    console.log(uniforms["warpVal"]);
     // if((ffplayer.song.getCurrentPosition()/100000)>0.48){
     // }
     renderer.render(scene, camera);
