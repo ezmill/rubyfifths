@@ -68,7 +68,7 @@ function createWarpedVideo(){
     video2.src = PATH + "textures/newruby.mp4";
     video2.load();
     // video.play();
-    video.loop = true;
+    video2.loop = true;
 
     texture = new THREE.Texture(video);
     texture.minFilter = texture.magFilter = THREE.LinearFilter;
