@@ -13,6 +13,13 @@ var loader = new THREE.TextureLoader();
 var mouseDown = false;
 var videoCounter = 0;
 var currentTexture;
+var FORMAT = ".webm";
+var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+if(isSafari){
+    FORMAT = ".mp4";
+
+}
 // var capturer = new CCapture( { framerate: 60, format: 'webm', workersPath: 'js/' } );
 if ( ! Detector.webgl ){
     Detector.addGetWebGLMessage();
@@ -56,7 +63,7 @@ function init() {
 function createWarpedVideo(){
     // texture = THREE.ImageUtils.loadTexture(PATH + "textures/leger.jpg");
     video = document.createElement("video");
-    video.src = PATH + "textures/newruby2.webm";
+    video.src = PATH + "textures/newruby2" + FORMAT;
     video.load();
     // video.addEventListener("canplaythrough", function(){
         video.play();
@@ -65,7 +72,7 @@ function createWarpedVideo(){
     video.loop = true;
 
     video2 = document.createElement("video");
-    video2.src = PATH + "textures/newruby.webm";
+    video2.src = PATH + "textures/newruby" + FORMAT;
     video2.load();
     // video.play();
     video2.loop = true;
