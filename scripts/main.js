@@ -58,9 +58,9 @@ function createWarpedVideo(){
     video = document.createElement("video");
     video.src = PATH + "textures/newruby2.webm";
     video.load();
-    video.addEventListener("canplaythrough", function(){
+    // video.addEventListener("canplaythrough", function(){
         video.play();
-    });
+    // });
     // video.play();
     video.loop = true;
 
