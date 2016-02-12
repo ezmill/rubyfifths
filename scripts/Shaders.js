@@ -54,17 +54,17 @@ var WarpShader = function(){
             "    vec2 warp = vec2(noise(gl_FragCoord.xy+t)+noise(gl_FragCoord.xy*0.5+t*3.5),",
             "                     noise(gl_FragCoord.xy+128.0-t)+noise(gl_FragCoord.xy*0.6-t*2.5))*0.5-0.25;",
             // "    vec2 uv = gl_FragCoord.xy / resolution.xy+warp;",
-            "    vec2 mW = warp*vec2(-1.0 * mouse);",
+            "    vec2 mW = warp*vec2(-1.0 * mouse)*warpVal;",
             "    vec2 uv = vUv+mW*sin(time);",
             "    vec4 look = texture2D(texture,uv);",
             "    vec2 offs = vec2(look.y-look.x,look.w-look.z)*vec2(mouse.x*uv.x/10.0, mouse.y*uv.y/10.0);",
             "    vec2 coord = offs+vUv;",
             "    vec4 repos = texture2D(texture, uv);",
-            "   if(warpVal > 0.0){",
+            // "   if(warpVal > 0.0){",
             "       gl_FragColor = vec4(repos.rgb,1.0);",
-            "   } else {",
-            "       gl_FragColor = texture2D(texture, vUv);",
-            "   }",
+            // "   } else {",
+            // "       gl_FragColor = texture2D(texture, vUv);",
+            // "   }",
             "}"
 
 

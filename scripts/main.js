@@ -10,10 +10,13 @@ var id;
 var scene, camera, renderer, texture, fbMaterial, mask;
 var debounceResize;
 var loader = new THREE.TextureLoader();
-var counter = 0;
+var mouseDown = false;
 // var capturer = new CCapture( { framerate: 60, format: 'webm', workersPath: 'js/' } );
-
-init();
+if ( ! Detector.webgl ){
+    Detector.addGetWebGLMessage();
+} else {
+    init();    
+}
 
 function init() {
     scene = new THREE.Scene();
@@ -36,6 +39,7 @@ function init() {
     window.addEventListener("resize", debounceResize);
     document.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mousedown", onMouseDown);
+    document.addEventListener("mouseup", onMouseUp);
     document.addEventListener('touchstart', onDocumentTouchStart, false);
     document.addEventListener('touchdown', onDocumentTouchStart, false);
     document.addEventListener('touchmove', onDocumentTouchMove, false);
@@ -103,6 +107,12 @@ function draw() {
     
     setUniforms(uniforms);
 
+    if(mouseDown){
+        uniforms["warpVal"] += (1.0 - uniforms["warpVal"])*0.1;        
+    } else {
+        uniforms["warpVal"] += (0.0 - uniforms["warpVal"])*0.1;
+    }
+    console.log(uniforms["warpVal"]);
     // if((ffplayer.song.getCurrentPosition()/100000)>0.48){
     // }
     renderer.render(scene, camera);
@@ -124,12 +134,11 @@ function onMouseMove(event) {
 }
 
 function onMouseDown() {
-    if(counter%2==0){
-        uniforms["warpVal"] = 1.0;        
-    } else {
-        uniforms["warpVal"] = 0.0;
-    }
-    counter++;
+    mouseDown = true;
+}
+
+function onMouseUp() {
+    mouseDown = false;
 }
 
 function onDocumentTouchStart(event) {

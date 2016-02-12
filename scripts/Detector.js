@@ -12,7 +12,7 @@
 
  	getWebGLErrorMessage : function () {
 
- 		// var domElement = document.createElement( 'div' );
+ 		var domElement = document.getElementById( 'container' );
 
 		// domElement.style.border = "solid 0px #f00";
 		// domElement.style.color = '#eee';
@@ -53,13 +53,13 @@
  		// domElement.style.width = '100%';
  		// domElement.style.height = '100';
  		// domElement.style.margin = '100%';
- 		document.getElementById("loading").style.display = "none";
- 		document.getElementById("yo").style.display = "none";
+ 		// document.getElementById("loading").style.display = "none";
+ 		// document.getElementById("yo").style.display = "none";
 
 
 
 
- 		document.body.style.background = "url(http://fractalfantasy.net/img/100ladiesnogl.jpg) no-repeat center center fixed";
+ 		document.body.style.background = "url(img/rubydetect2.jpg) no-repeat center center fixed";
  		document.body.style.backgroundSize = 'cover';
         document.body.style.webkitBackgroundSize = 'cover';
         document.body.style.mozBackgroundSize = 'cover';
