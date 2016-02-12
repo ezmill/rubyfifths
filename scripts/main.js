@@ -56,7 +56,7 @@ function init() {
 function createWarpedVideo(){
     // texture = THREE.ImageUtils.loadTexture(PATH + "textures/leger.jpg");
     video = document.createElement("video");
-    video.src = PATH + "textures/newruby2.mp4";
+    video.src = PATH + "textures/newruby2.webm";
     video.load();
     video.addEventListener("canplaythrough", function(){
         video.play();
@@ -65,7 +65,7 @@ function createWarpedVideo(){
     video.loop = true;
 
     video2 = document.createElement("video");
-    video2.src = PATH + "textures/newruby.mp4";
+    video2.src = PATH + "textures/newruby.webm";
     video2.load();
     // video.play();
     video2.loop = true;
